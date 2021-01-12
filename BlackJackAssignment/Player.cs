@@ -8,11 +8,17 @@ namespace BlackJackAssignment
 {
     class Player
     {
+
         public string CardDealt { get; set; }
         public string CardNumber { get; set; }
         public string CardSuite { get; set; }
         public int Value { get; set; }
         public int Total { get; set; }
+
+        string[] cardNumber = new string[12] { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
+        string[] cardSuite = { "Hearts", "Spades", "Clubs", "Diamonds" };
+
+
 
 
         public Player()
@@ -20,58 +26,106 @@ namespace BlackJackAssignment
 
         }
 
-        public Player(string cardNumber, string cardSuite, int value)
+        public Player(string cardNumber, string cardSuite, int value, int total, string cardDealt)
         {
-
+            CardDealt = cardDealt;
             CardNumber = cardNumber;
             CardSuite = cardSuite;
             Value = value;
-
+            Total = total;
         }
-        public int GetCardNumber()
+        public Player(string cardNumber, string cardSuite, int value)
         {
-            Random Rand = new Random();
-            int[] Deck = new int[52];
-            string[] suits = { "Hearts", "Spades", "Clubs", "Diamonds" };
-            string[] ranks = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
-
-            for (int i = 0; i < Deck.Length; i++)
-            {
-                Deck[i] = i;
-            }
-
-            for (int i = 0; i < Deck.Length; i++)
-            {
-                int index = Rand.Next(Deck.Length);
-                int temp = Deck[i];
-                Deck[i] = Deck[index];
-                Deck[index] = temp;
-            }
-
-            for (int i = 0; i < 2; i++)
-            {
-                String suit = suits[Deck[i]/13];
-                String rank = ranks[Deck[i]/13];
-                int value = 0;
-                value = Deck[i];
-                Console.WriteLine("Card dealt is the {0} of {1}, value is {2}",ranks,suits,value );
-
-            }
-            return Console.Read();
+            CardNumber = cardNumber;
+            CardSuite = cardSuite;
+            Value = value;
         }
-        public override string ToString()
+
+        public string OutputConsole()
         {
-            return string.Format("{0}", GetCardNumber());
+
+
+            Console.WriteLine("Card dealt is the {0} of {1}, value {2}", GetCardNumber(), GetsCardSuite(), GetValue());
+            return Console.ReadLine();
+          
+
         }
+        public string GetCardNumber()
+        {
+            Random rand = new Random();
+
+            
+            int _cardNumber = rand.Next(cardNumber.Length);
+            CardNumber = cardNumber[_cardNumber];
+            return CardNumber;
+        }
+        public string GetsCardSuite()
+        {
+            Random rand = new Random();
+            
+            int _cardSuite = rand.Next(cardSuite.Length);
+            CardSuite = cardSuite[_cardSuite];
+            return CardSuite;
+
+        }
+        public int GetValue()
+        {
+            int value = 0;
 
 
+            if (GetCardNumber() == cardNumber[9])
+            {
+                value = 10;
+            }
+            if (GetCardNumber() == cardNumber[10])
+            {
+                value = 10;
+            }
+            if (GetCardNumber() == cardNumber[11])
+            {
+                value = 10;
+            }
+            if (GetCardNumber() == cardNumber[1])
+            {
+                value = 2;
+            }
+            if (GetCardNumber() == cardNumber[2])
+            {
+                value = 3;
+            }
+            if (GetCardNumber() == cardNumber[3])
+            {
+                value = 4;
+            }
+            if (GetCardNumber() == cardNumber[4])
+            {
+                value = 5;
+            }
+            if (GetCardNumber() == cardNumber[5])
+            {
+                value = 6;
+            }
+            if (GetCardNumber() == cardNumber[6])
+            {
+                value = 7;
+            }
+            if (GetCardNumber() == cardNumber[7])
+            {
+                value = 8;
+            }
+            if (GetCardNumber() == cardNumber[8])
+            {
+                value = 9;
+            }
+            if (GetCardNumber() == cardNumber[0])
+            {
+                value = 11;
+            }
 
+            Value = value;
 
-
-
-
-
-
+            return Value;
+        }
 
     }
 }

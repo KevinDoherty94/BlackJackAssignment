@@ -12,15 +12,18 @@ namespace BlackJackAssignment
         {
             Player p1 = new Player();
 
-            p1.GetCardNumber();
+            p1.OutputConsole();
            
 
 
 
-            Console.ReadLine();
+            
 
 
         }
+
+
+
        
         
     }
