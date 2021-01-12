@@ -13,8 +13,8 @@ namespace BlackJackAssignment
         public string CardSuite { get; set; }
         public int Value { get; set; }
         public int Total { get; set; }
-       
-        
+
+
         public Player()
         {
 
@@ -22,89 +22,49 @@ namespace BlackJackAssignment
 
         public Player(string cardNumber, string cardSuite, int value)
         {
-            
+
             CardNumber = cardNumber;
             CardSuite = cardSuite;
             Value = value;
-           
+
         }
-        public string GetCardNumber()
+        public int GetCardNumber()
         {
-            Random rand = new Random();
+            Random Rand = new Random();
+            int[] Deck = new int[52];
+            string[] suits = { "Hearts", "Spades", "Clubs", "Diamonds" };
+            string[] ranks = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
 
-            string[] _CardNumber = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
-            int cardNumber = rand.Next(_CardNumber.Length);
-            CardNumber = _CardNumber[cardNumber];
-            return CardNumber;
+            for (int i = 0; i < Deck.Length; i++)
+            {
+                Deck[i] = i;
+            }
+
+            for (int i = 0; i < Deck.Length; i++)
+            {
+                int index = Rand.Next(Deck.Length);
+                int temp = Deck[i];
+                Deck[i] = Deck[index];
+                Deck[index] = temp;
+            }
+
+            for (int i = 0; i < 2; i++)
+            {
+                String suit = suits[Deck[i]/13];
+                String rank = ranks[Deck[i]/13];
+                int value = 0;
+                value = Deck[i];
+                Console.WriteLine("Card dealt is the {0} of {1}, value is {2}",ranks,suits,value );
+
+            }
+            return Console.Read();
         }
-        public string GetsCardSuite()
+        public override string ToString()
         {
-            Random rand = new Random();
-            string[] _CardSuite = { "Hearts", "Spades", "Clubs", "Diamonds" };
-            int cardSuite = rand.Next(_CardSuite.Length);
-            CardSuite = _CardSuite[cardSuite];
-            return CardSuite;
-
+            return string.Format("{0}", GetCardNumber());
         }
-        public int CardValue()
-        {
-            int value = 0;
 
 
-            if (GetCardNumber() == "Jack")
-            {
-                value = 10;
-            }
-            if (GetCardNumber() == "Queen")
-            {
-                value = 10;
-            }
-            if (GetCardNumber() == "King")
-            {
-                value = 10;
-            }
-            if (GetCardNumber() == "2")
-            {
-                value = 2;
-            }
-            if (GetCardNumber() == "3")
-            {
-                value = 3;
-            }
-            if (GetCardNumber() == "4")
-            {
-                value = 4;
-            }
-            if (GetCardNumber() == "5")
-            {
-                value = 5;
-            }
-            if (GetCardNumber() == "6")
-            {
-                value = 6;
-            }
-            if (GetCardNumber() == "7")
-            {
-                value = 7;
-            }
-            if (GetCardNumber() == "8")
-            {
-                value = 8;
-            }
-            if (GetCardNumber() == "9")
-            {
-                value = 9;
-            }
-            if (GetCardNumber() == "Ace")
-            {
-                value = 11;
-            }
-
-            Value = value;
-
-
-            return Value;
-        }
 
 
 
@@ -115,3 +75,4 @@ namespace BlackJackAssignment
 
     }
 }
+
