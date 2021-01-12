@@ -32,7 +32,7 @@ namespace BlackJackAssignment
         {
             Random rand = new Random();
 
-            string[] _CardNumber = new string[12] { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
+            string[] _CardNumber = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
             int cardNumber = rand.Next(_CardNumber.Length);
             CardNumber = _CardNumber[cardNumber];
             return CardNumber;
