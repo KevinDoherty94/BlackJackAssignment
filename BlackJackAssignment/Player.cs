@@ -45,9 +45,23 @@ namespace BlackJackAssignment
         {
 
 
-            Console.WriteLine("Card dealt is the {0} of {1}, value {2}", GetCardNumber(), GetsCardSuite(), GetValue());
+           
+           
+
+            int num1, total = 0;
+            for (int i = 0; i < 10; i++)
+            {
+
+                Console.WriteLine("Card dealt is the {0} of {1}, value {2}", GetCardNumber(), GetsCardSuite(), GetValue());
+                num1 = GetValue();
+                total +=  num1;
+            }
+            Console.WriteLine("Your score is {0}", total);
+
             return Console.ReadLine();
-          
+
+
+
 
         }
         public string GetCardNumber()
