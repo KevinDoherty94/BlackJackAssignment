@@ -1,39 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlackJackAssignment
 {
-    class Player
+    internal class Player
     {
-
-        public string CardDealt { get; set; }
+        //Properties
+        
         public string CardNumber { get; set; }
         public string CardSuite { get; set; }
         public int Value { get; set; }
         public int Total { get; set; }
 
-        string[] cardNumber = new string[12] { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
-        string[] cardSuite = { "Hearts", "Spades", "Clubs", "Diamonds" };
+        //Array with cards value
+        private string[] cardNumber = new string[12] { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
 
+        //Array with card suites
+        private string[] cardSuite = { "Hearts", "Spades", "Clubs", "Diamonds" };
 
-
+        //Constructors
 
         public Player()
         {
-
         }
 
-        public Player(string cardNumber, string cardSuite, int value, int total, string cardDealt)
+        public Player(string cardNumber, string cardSuite, int value, int total)
         {
-            CardDealt = cardDealt;
+            
             CardNumber = cardNumber;
             CardSuite = cardSuite;
             Value = value;
             Total = total;
         }
+
         public Player(string cardNumber, string cardSuite, int value)
         {
             CardNumber = cardNumber;
@@ -41,37 +39,39 @@ namespace BlackJackAssignment
             Value = value;
         }
 
+        // Methods in class
         public string OutputConsole()
         {
-
-
             Console.WriteLine("Card dealt is the {0} of {1}, value {2}", GetCardNumber(), GetsCardSuite(), GetValue());
-            return Console.ReadLine();
-          
 
+            return Console.ReadLine();
         }
+
         public string GetCardNumber()
         {
             Random rand = new Random();
 
-            
+            //Randomises the cardNumber Array and gets card number ie. Ace,4,5,Jack ... 
+
             int _cardNumber = rand.Next(cardNumber.Length);
             CardNumber = cardNumber[_cardNumber];
             return CardNumber;
         }
+
         public string GetsCardSuite()
         {
             Random rand = new Random();
-            
+            //Randomises cardSuite Array gets card suite ie Hearts,Diamonds ...
+
             int _cardSuite = rand.Next(cardSuite.Length);
             CardSuite = cardSuite[_cardSuite];
             return CardSuite;
-
         }
+
         public int GetValue()
         {
+            //Uses cardNumber Array indexes to get a value for strings ie Ace,Jack,Queen,"8" ...
             int value = 0;
-
 
             if (GetCardNumber() == cardNumber[9])
             {
@@ -126,7 +126,5 @@ namespace BlackJackAssignment
 
             return Value;
         }
-
     }
 }
-

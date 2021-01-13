@@ -1,30 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BlackJackAssignment
+﻿namespace BlackJackAssignment
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            //Uses an instance of Player class and outputs a method which gives details of a randomly generated card
             Player p1 = new Player();
 
             p1.OutputConsole();
-           
-
-
-
-            
-
-
         }
-
-
-
-       
-        
     }
 }
