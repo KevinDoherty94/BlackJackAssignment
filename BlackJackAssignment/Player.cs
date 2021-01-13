@@ -8,6 +8,7 @@ namespace BlackJackAssignment
 {
     class Player
     {
+        //Properties
 
         public string CardDealt { get; set; }
         public string CardNumber { get; set; }
@@ -15,11 +16,15 @@ namespace BlackJackAssignment
         public int Value { get; set; }
         public int Total { get; set; }
 
+
+        //Array which stores card face values
         string[] cardNumber = new string[12] { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
+
+        //Array that stores card suites
         string[] cardSuite = { "Hearts", "Spades", "Clubs", "Diamonds" };
 
 
-
+        //Constructors
 
         public Player()
         {
@@ -41,13 +46,10 @@ namespace BlackJackAssignment
             Value = value;
         }
 
+        //Class methods
+
         public string OutputConsole()
         {
-
-
-           
-           
-
             int num1, total = 0;
             for (int i = 0; i < 10; i++)
             {
@@ -59,17 +61,12 @@ namespace BlackJackAssignment
             Console.WriteLine("Your score is {0}", total);
 
             return Console.ReadLine();
-
-
-
-
         }
         public string GetCardNumber()
         {
             Random rand = new Random();
 
-            
-            int _cardNumber = rand.Next(cardNumber.Length);
+            int _cardNumber = rand.Next(cardNumber.Length); //Randomises cardNumber Array to out card number
             CardNumber = cardNumber[_cardNumber];
             return CardNumber;
         }
@@ -77,13 +74,15 @@ namespace BlackJackAssignment
         {
             Random rand = new Random();
             
-            int _cardSuite = rand.Next(cardSuite.Length);
+            int _cardSuite = rand.Next(cardSuite.Length);//Randomises cardSuite Array to out card suite
             CardSuite = cardSuite[_cardSuite];
             return CardSuite;
 
         }
         public int GetValue()
         {
+            //Uses cardNumber indexes from the cardNumber Array which converts its string value to an int of its face value
+
             int value = 0;
 
 
