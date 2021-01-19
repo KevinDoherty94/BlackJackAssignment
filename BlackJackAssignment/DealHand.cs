@@ -21,7 +21,8 @@
         
         public int Total { get; set; }
 
-        
+       
+
         private readonly string[] cardFaceValues = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
 
        
@@ -38,28 +39,6 @@
             OutputCardValuesToConsole(currentTotal, drawNumber);
         }
 
-        //public DealHand(string cardNumber, string cardSuite, int value, int total, string cardDealt)
-        //{
-        //    CardDealt = cardDealt;
-        //    CardNumber = cardNumber;
-        //    CardSuite = cardSuite;
-        //    Value = value;
-        //    Total = total;
-        //}
-
-        //public DealHand(string cardNumber, string cardSuite, int value)
-        //{
-        //    CardNumber = cardNumber;
-        //    CardSuite = cardSuite;
-        //    Value = value;
-        //}
-
-        //Class methods
-        /// <summary>
-        /// The OutputCardValuesToConsole.
-        /// </summary>
-        /// <param name="currentTotal">The currentTotal<see cref="int"/>.</param>
-        /// <param name="drawNumber">The drawNumber<see cref="int"/>.</param>
         public void OutputCardValuesToConsole(int currentTotal, int drawNumber)
         {
             int num1;
