@@ -9,11 +9,12 @@
 
     class Program
     {
-       //CONSTANTS
+        //Constants
+
         const int MAX_VALUE = 21;
         const int DEALER_BELOW = 17;
 
-       //PROPERTIES
+        //Properties
 
         public static int DrawNumber = 2;
 
@@ -27,27 +28,26 @@
 
         public static string StickOrTwist;
 
-        
-        private static void Main(string[] args)
+
+        static void Main(string[] args)
         {
-            // Black Jack Flow
             string response = "";
+
             do
             {
-               
-                Console.WriteLine("Player Plays\n");
-
                 DealPlayerHand();
-
+                Console.WriteLine("Do you want to play another game? - y/n");
+                response = Console.ReadLine();
 
             } while (response != "y");
 
-
-
         }
 
-        private static void DealPlayerHand()
+        //Methods
+
+        public static void DealPlayerHand()
         {
+            Console.WriteLine("Player Plays\n");
             DealHand newHand = new DealHand(PlayerTotal, DrawNumber);
             Console.WriteLine("\nYour score is {0}", newHand.Total);
 
@@ -75,18 +75,18 @@
 
                 }
             }
-           
+
             else if (newHand.Total > MAX_VALUE)
             {
                 Console.WriteLine($"\nBust! Score above {MAX_VALUE}\nDealer wins");
                 Console.ReadLine();
             }
 
-            
+
         }
 
-        
-        private static void DealDealerHand()
+
+        public static void DealDealerHand()
         {
             DealHand newHand = new DealHand(DealerTotal, DrawNumber);
             Console.WriteLine("\nDealer score is {0}", newHand.Total);
@@ -95,31 +95,34 @@
             {
 
                 Console.WriteLine("");
-                    DrawNumber = 1;
-                    DealerTotal = newHand.Total;
-                    DealDealerHand();
-                
+                DrawNumber = 1;
+                DealerTotal = newHand.Total;
+                DealDealerHand();
+
             }
-            else if(PlayerTotal > DealerTotal)
+            else if (PlayerTotal > DealerTotal)
             {
                 Console.WriteLine("");
                 Console.WriteLine("Player wins");
-                
+
             }
             else if (newHand.Total > MAX_VALUE)
             {
                 Console.WriteLine("");
                 Console.WriteLine($"Bust! Score above {MAX_VALUE}\nPlayer wins");
-               
+
             }
             else
             {
                 Console.WriteLine("");
                 Console.WriteLine("Dealer wins");
-               
+
             }
             Console.ReadLine();
+
+
+
         }
-        
+
     }
 }

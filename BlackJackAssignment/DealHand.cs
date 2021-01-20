@@ -6,7 +6,7 @@
     
     public class DealHand
     {
-       
+       //Class Properties
         public string CardDealt { get; set; }
 
        
@@ -21,13 +21,14 @@
         
         public int Total { get; set; }
 
-       
+       //Class Arrays
 
         private readonly string[] cardFaceValues = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
 
        
         private readonly string[] cardSuite = { "Hearts", "Spades", "Clubs", "Diamonds" };
 
+        //Class Constructors
         
         public DealHand()
         {
@@ -38,6 +39,8 @@
         {
             OutputCardValuesToConsole(currentTotal, drawNumber);
         }
+
+        //Class methods
 
         public void OutputCardValuesToConsole(int currentTotal, int drawNumber)
         {
@@ -88,7 +91,16 @@
            
             if (CardNumber == cardFaceValues[0])
             {
-                return 11;
+                if (Total > 11)
+                {
+                    return 1;
+
+                }
+                if (Total < 11) {
+
+                    return 11;
+                }
+                
             }
 
             // Jack, Queen or King
