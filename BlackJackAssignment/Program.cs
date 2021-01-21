@@ -27,9 +27,7 @@
 
         static void Main(string[] args)
         {
-
-
-            Console.WriteLine("Player Plays\n");
+            Console.WriteLine("\nPlayer Plays");
             DealPlayerHand();
 
         }
@@ -38,7 +36,6 @@
 
         public static void DealPlayerHand()
         {
-
 
             DealHand newHand = new DealHand(PlayerTotal, DrawNumber);
             Console.WriteLine("\nYour score is {0}", newHand.Total);
@@ -70,19 +67,9 @@
             else if (newHand.Total > MAX_VALUE)
             {
                 Console.WriteLine($"\nBust! Score above {MAX_VALUE}\nDealer wins");
-                Console.WriteLine("\nDo you want to play another game? - Please enter y/n");
-                string response = "";
 
+                PlayAgain();
 
-
-                while (response != "y")
-                {
-                    
-                    response = Console.ReadLine();
-                    Console.Clear();
-                    Console.WriteLine("\nPlayer Plays");
-                    DealPlayerHand();
-                }
 
             }
 
@@ -93,7 +80,7 @@
             Console.ReadLine();
 
 
-        }
+        }//End of DealPlayerHand method
 
 
         public static void DealDealerHand()
@@ -115,84 +102,65 @@
             {
 
                 Console.WriteLine("\nPlayer wins");
-                Console.WriteLine("\nDo you want to play another game? - Please enter y/n");
 
-                string response = "";
+                PlayAgain();
 
-
-
-                while (response != "y")
-                {
-
-                    response = Console.ReadLine();
-                    Console.Clear();
-                    Console.WriteLine("\nPlayer Plays");
-                    DealPlayerHand();
-                }
             }
             else if (DealerTotal > MAX_VALUE)
             {
 
                 Console.WriteLine($"\nBust! Score above {MAX_VALUE}\nPlayer wins");
-                Console.WriteLine("\nDo you want to play another game? - Please enter y/n");
 
-                string response = "";
-              
+                PlayAgain();
 
-
-
-                while (response != "y")
-                {
-
-                    response = Console.ReadLine();
-                    Console.Clear();
-                    Console.WriteLine("\nPlayer Plays");
-                    DealPlayerHand();
-                }
             }
             else if (PlayerTotal == DealerTotal)
             {
                 Console.WriteLine($"\nIts a draw");
-                Console.WriteLine("\nDo you want to play another game? - Please enter y/n");
 
-                string response = "";
-                
+                PlayAgain();
 
-
-
-                while (response != "y")
-                {
-
-                    response = Console.ReadLine();
-                    Console.Clear();
-                    Console.WriteLine("\nPlayer Plays");
-                    DealPlayerHand();
-                }
             }
             else
             {
-
                 Console.WriteLine("\nDealer wins");
-                Console.WriteLine("\nDo you want to play another game? - Please enter y/n");
 
-                string response = "";
+                PlayAgain();
 
-
-
-                while (response != "y")
-                {
-
-                    response = Console.ReadLine();
-                    Console.Clear();
-                    Console.WriteLine("\nPlayer Plays");
-                    DealPlayerHand();
-                }
             }
             Console.ReadLine();
 
+            
 
 
-        }
 
+        }//End of DealDealerHand method
+
+        public static void PlayAgain()
+        {
+            DealHand playAgain = new DealHand();
+
+            playAgain.Total = 0;
+            DealerTotal = 0;
+            PlayerTotal = 0;
+
+            string response = "";
+            Console.WriteLine("\nDo you want to play another game? - Please enter y/n");
+            response = Console.ReadLine();
+
+            while (response == "y")
+            {
+                Console.Clear();
+                Console.WriteLine("\nPlayer Plays");
+                DealPlayerHand();
+
+            }
+
+            Console.WriteLine("\nThanks for playing");
+
+            Console.ReadLine();
+
+        }// End of PlayAgain method
+       
     }
 }

@@ -7,6 +7,7 @@
     public class DealHand
     {
        //Class Properties
+
         public string CardDealt { get; set; }
 
        
