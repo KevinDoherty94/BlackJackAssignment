@@ -43,7 +43,7 @@
             DealHand newHand = new DealHand(PlayerTotal, DrawNumber);
             Console.WriteLine("\nYour score is {0}", newHand.Total);
 
-            if (newHand.Total < MAX_VALUE)
+            if (newHand.Total <= MAX_VALUE)
             {
                 Console.WriteLine("\nDo you want to stick or twist - s/t?\n");
                 StickOrTwist = Console.ReadLine();
@@ -59,8 +59,9 @@
                 {
                     // reset
                     DrawNumber = 2;
+                    PlayerTotal = newHand.Total;
                     Console.WriteLine(string.Empty);
-                    Console.WriteLine("\nDealer Plays");
+                    Console.WriteLine("\nDealer Plays\n");
                     DealDealerHand();
 
                 }
@@ -70,17 +71,18 @@
             {
                 Console.WriteLine($"\nBust! Score above {MAX_VALUE}\nDealer wins");
                 Console.WriteLine("\nDo you want to play another game? - Please enter y/n");
-
                 string response = "";
-                response = Console.ReadLine();
 
-                do
+
+
+                while (response != "y")
                 {
+                    
+                    response = Console.ReadLine();
                     Console.Clear();
                     Console.WriteLine("\nPlayer Plays");
                     DealPlayerHand();
-
-                } while (response != "y");
+                }
 
             }
 
@@ -99,12 +101,13 @@
             DealHand newHand = new DealHand(DealerTotal, DrawNumber);
             Console.WriteLine("\nDealer score is {0}", newHand.Total);
 
-            if (newHand.Total < DEALER_BELOW)
+            DealerTotal = newHand.Total;
+
+            if (DealerTotal < DEALER_BELOW)
             {
 
                 Console.WriteLine("");
                 DrawNumber = 1;
-                DealerTotal = newHand.Total;
                 DealDealerHand();
 
             }
@@ -115,36 +118,37 @@
                 Console.WriteLine("\nDo you want to play another game? - Please enter y/n");
 
                 string response = "";
-                response = Console.ReadLine();
 
-                do
+
+
+                while (response != "y")
                 {
+
+                    response = Console.ReadLine();
                     Console.Clear();
                     Console.WriteLine("\nPlayer Plays");
                     DealPlayerHand();
-
-                } while (response != "y");
-
-
+                }
             }
-            else if (newHand.Total > MAX_VALUE)
+            else if (DealerTotal > MAX_VALUE)
             {
 
                 Console.WriteLine($"\nBust! Score above {MAX_VALUE}\nPlayer wins");
                 Console.WriteLine("\nDo you want to play another game? - Please enter y/n");
 
                 string response = "";
-                response = Console.ReadLine();
+              
 
-                do
+
+
+                while (response != "y")
                 {
+
+                    response = Console.ReadLine();
                     Console.Clear();
                     Console.WriteLine("\nPlayer Plays");
                     DealPlayerHand();
-
-                } while (response != "y");
-
-
+                }
             }
             else if (PlayerTotal == DealerTotal)
             {
@@ -152,17 +156,18 @@
                 Console.WriteLine("\nDo you want to play another game? - Please enter y/n");
 
                 string response = "";
+                
 
-                response = Console.ReadLine();
 
-                do
+
+                while (response != "y")
                 {
+
+                    response = Console.ReadLine();
                     Console.Clear();
                     Console.WriteLine("\nPlayer Plays");
                     DealPlayerHand();
-
-                } while (response != "y");
-
+                }
             }
             else
             {
@@ -171,17 +176,17 @@
                 Console.WriteLine("\nDo you want to play another game? - Please enter y/n");
 
                 string response = "";
-                response = Console.ReadLine();
 
-                do
+
+
+                while (response != "y")
                 {
+
+                    response = Console.ReadLine();
                     Console.Clear();
                     Console.WriteLine("\nPlayer Plays");
                     DealPlayerHand();
-
-                } while (response != "y");
-
-
+                }
             }
             Console.ReadLine();
 
