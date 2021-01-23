@@ -29,7 +29,12 @@
 
         static void Main(string[] args)
         {
+           
+
+            Bet();
+
             Console.WriteLine("\nPlayer Plays");
+
             DealPlayerHand();
 
         }//Main Method
@@ -83,7 +88,6 @@
 
 
         }//End of DealPlayerHand method
-
 
         public static void DealDealerHand()
         {
@@ -164,6 +168,37 @@
             Console.ReadLine();
 
         }// End of PlayAgain method
+
+        public static void Bet()
+        {
+            Bank bet = new Bank();
+
+            string betResponse = "";
+
+            Console.WriteLine("\nDo you want to place a bet? - please enter y/n\n");
+
+            betResponse = Console.ReadLine();
+
+            if (betResponse == "y")
+            {
+                Console.WriteLine("\nPlease enter how much you want to place in the bank");
+                bet.BankTotal = decimal.Parse(Console.ReadLine());
+
+                Console.WriteLine("\nHow much do you want to bet this round?");
+                bet.BetAmount = decimal.Parse(Console.ReadLine());
+
+                bet.CurrentBankTotal = bet.BankTotal - bet.BetAmount;
+
+                Console.WriteLine("\nYou now have {0} in your bank\nPress enter to continue ...", bet.CurrentBankTotal);
+            }
+
+            if (betResponse == "n")
+            {
+                Console.WriteLine("\nThat's okay, if you change your mind you can bet next game\nPlease press enter to continue ...");
+            }
+            Console.ReadLine();
+
+        }//End of Bet method
        
     }
 }
