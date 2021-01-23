@@ -8,7 +8,6 @@ namespace BlackJackAssignment
 {
     class Bank
     {
-        public decimal BankTotal { get; set; }
 
         public decimal CurrentBankTotal { get; set; }
 
@@ -21,15 +20,16 @@ namespace BlackJackAssignment
 
         }
 
-        public Bank(decimal bankTotal, decimal remaining, decimal betAmount,decimal currentBankTotal)
+        public Bank(decimal remaining, decimal betAmount,decimal currentBankTotal)
         {
-            BankTotal = bankTotal;
-
+           
             Remaining = remaining;
 
             BetAmount = betAmount;
 
             CurrentBankTotal = currentBankTotal;
         }
+
+      
     }
 }

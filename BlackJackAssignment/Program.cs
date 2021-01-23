@@ -14,6 +14,8 @@
 
         const int MAX_VALUE = 21;
         const int DEALER_BELOW = 17;
+        const int MINIMUM_BET = 25;
+        const int MAXIMUM_BET = 50;
 
         //Properties
 
@@ -25,12 +27,18 @@
 
         public static string StickOrTwist;
 
+        public static decimal BankTotal;
 
 
-        static void Main(string[] args)
+
+       public static void Main(string[] args)
         {
-           
 
+            
+            Console.WriteLine("\nPlease enter how much you want to place in the bank\nNote if you dont want to bet today your money will be returned to you after the game");
+            Console.Write("Enter value here: ");
+            BankTotal = decimal.Parse(Console.ReadLine());
+          
             Bet();
 
             Console.WriteLine("\nPlayer Plays");
@@ -76,8 +84,6 @@
                 Console.WriteLine($"\nBust! Score above {MAX_VALUE}\nDealer wins");
 
                 PlayAgain();
-
-
             }
 
             else
@@ -158,6 +164,7 @@
             while (response == "y")
             {
                 Console.Clear();
+                Bet();
                 Console.WriteLine("\nPlayer Plays");
                 DealPlayerHand();
 
@@ -175,24 +182,30 @@
 
             string betResponse = "";
 
+            Console.WriteLine("\nYou can place a bet on this table\nThe Minimum bet value is 25 and the Maximum is 50 ");
+
             Console.WriteLine("\nDo you want to place a bet? - please enter y/n\n");
 
             betResponse = Console.ReadLine();
 
-            if (betResponse == "y")
+            if (betResponse.ToLower() == "y")
             {
-                Console.WriteLine("\nPlease enter how much you want to place in the bank");
-                bet.BankTotal = decimal.Parse(Console.ReadLine());
 
                 Console.WriteLine("\nHow much do you want to bet this round?");
                 bet.BetAmount = decimal.Parse(Console.ReadLine());
 
-                bet.CurrentBankTotal = bet.BankTotal - bet.BetAmount;
+                while ((bet.BetAmount != MINIMUM_BET) && (bet.BetAmount != MAXIMUM_BET))
+                {
+                    Console.WriteLine("\nIncorrect amount entered\nThe Minimum bet value is 25 and the Maximum is 50\nPlease enter your bet again");
 
-                Console.WriteLine("\nYou now have {0} in your bank\nPress enter to continue ...", bet.CurrentBankTotal);
+                    Console.WriteLine("\nHow much do you want to bet?");
+                    bet.BetAmount = decimal.Parse(Console.ReadLine());
+                }
+
+                Console.WriteLine($"\nYou have {BankTotal} in your bank\nYour current bet is {bet.BetAmount}\nPress enter to continue ...");
             }
 
-            if (betResponse == "n")
+            if (betResponse.ToLower() == "n")
             {
                 Console.WriteLine("\nThat's okay, if you change your mind you can bet next game\nPlease press enter to continue ...");
             }

@@ -51,7 +51,7 @@
                 // Added to stop duplication
                 Thread.Sleep(1);
 
-                Console.WriteLine("Card dealt is the {0} of {1}, value {2}",GetCardNumber(), GetsCardSuite(), num1 = GetValue(currentTotal));
+                Console.WriteLine("\nCard dealt is the {0} of {1}, value {2}",GetCardNumber(), GetsCardSuite(), num1 = GetValue(currentTotal));
 
                 Total += num1;
             }
