@@ -10,16 +10,10 @@
 
         public string CardDealt { get; set; }
 
-       
         public string CardNumber { get; set; }
 
-       
         public string CardSuite { get; set; }
 
-       
-        public int Value { get; set; }
-
-        
         public int Total { get; set; }
 
         public int CurrentTotal { get; set; }
@@ -37,7 +31,6 @@
         {
         }
 
-        
         public DealHand(int currentTotal, int drawNumber)
         {
             OutputCardValuesToConsole(currentTotal, drawNumber);
@@ -45,8 +38,6 @@
 
 
         }
-
-       
 
         //Class methods
 
@@ -72,7 +63,6 @@
             
         }
 
-       
         public string GetCardNumber()
         {
             Random rand = new Random();
@@ -81,7 +71,6 @@
             return CardNumber;
         }
 
-        
         public string GetsCardSuite()
         {
             Random rand = new Random();
@@ -90,7 +79,6 @@
             return CardSuite;
         }
 
-        
         public int GetValue(int currentTotal)
         {
            
