@@ -25,12 +25,14 @@
 
         public static string StickOrTwist;
 
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("\nPlayer Plays");
             DealPlayerHand();
 
-        }
+        }//Main Method
 
         //Methods
 
@@ -143,6 +145,7 @@
             playAgain.Total = 0;
             DealerTotal = 0;
             PlayerTotal = 0;
+            DrawNumber = 2;
 
             string response = "";
             Console.WriteLine("\nDo you want to play another game? - Please enter y/n");

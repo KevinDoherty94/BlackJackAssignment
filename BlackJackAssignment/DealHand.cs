@@ -22,7 +22,9 @@
         
         public int Total { get; set; }
 
-       //Class Arrays
+        public int AceTotal { get; set; }
+
+        //Class Arrays
 
         private readonly string[] cardFaceValues = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
 
@@ -53,12 +55,16 @@
                 // Added to stop duplication
                 Thread.Sleep(1);
 
-                Console.WriteLine("Card dealt is the {0} of {1}, value {2}", GetCardNumber(), GetsCardSuite(), num1 = GetValue());
+                Console.WriteLine("Card dealt is the {0} of {1}, value {2}",GetCardNumber(), GetsCardSuite(), num1 = GetValue());
 
                 Total += num1;
             }
 
             Total += currentTotal;
+
+            //Keeps a total to determine ace is 11 or 1 
+
+             AceTotal = Total;
         }
 
        
@@ -82,6 +88,8 @@
         
         public int GetValue()
         {
+           
+
             // 2 - 9 numbers only lenght of 1, Ace, Jack and Queen are greater
             if (CardNumber.Length == 1)
             {
@@ -92,12 +100,12 @@
            
             if (CardNumber == cardFaceValues[0])
             {
-                if (Total > 11)
+                if (AceTotal >= 11)
                 {
                     return 1;
 
                 }
-                if (Total < 11) {
+                if (AceTotal < 11) {
 
                     return 11;
                 }
