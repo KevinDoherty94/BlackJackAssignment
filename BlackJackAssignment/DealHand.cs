@@ -22,7 +22,7 @@
         
         public int Total { get; set; }
 
-        public int AceTotal { get; set; }
+        public int CurrentTotal { get; set; }
 
         //Class Arrays
 
@@ -41,7 +41,12 @@
         public DealHand(int currentTotal, int drawNumber)
         {
             OutputCardValuesToConsole(currentTotal, drawNumber);
+            GetValue(currentTotal);
+
+
         }
+
+       
 
         //Class methods
 
@@ -55,7 +60,7 @@
                 // Added to stop duplication
                 Thread.Sleep(1);
 
-                Console.WriteLine("Card dealt is the {0} of {1}, value {2}",GetCardNumber(), GetsCardSuite(), num1 = GetValue());
+                Console.WriteLine("Card dealt is the {0} of {1}, value {2}",GetCardNumber(), GetsCardSuite(), num1 = GetValue(currentTotal));
 
                 Total += num1;
             }
@@ -64,7 +69,7 @@
 
             //Keeps a total to determine ace is 11 or 1 
 
-             AceTotal = Total;
+            
         }
 
        
@@ -86,7 +91,7 @@
         }
 
         
-        public int GetValue()
+        public int GetValue(int currentTotal)
         {
            
 
@@ -100,12 +105,12 @@
            
             if (CardNumber == cardFaceValues[0])
             {
-                if (AceTotal >= 11)
+                if (currentTotal >= 11)
                 {
                     return 1;
 
                 }
-                if (AceTotal < 11) {
+                if (currentTotal < 11) {
 
                     return 11;
                 }
